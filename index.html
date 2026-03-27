@@ -1,10 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Website</title>
+  <meta charset="UTF-8">
+  <title>ShiRui Ni | Portfolio</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+    }
+
+    /* 导航栏 */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 60px;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+
+    /* 第一屏 */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 60px;
+    }
+
+    .hero-text {
+      max-width: 50%;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .hero img {
+      width: 280px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Hello! This is my personal site 👋</h1>
-  <p>Welcome to my website.</p>
+
+  <!-- 导航栏 -->
+  <nav>
+    <div><strong>ShiRui Ni</strong></div>
+    <div>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Projects</a>
+      <a href="#">Research</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <!-- 第一屏 -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Hi, I'm ShiRui Ni 👋</h1>
+      <p>
+        I graduated from the School of Business at Shandong University,
+        majoring in Business Administration (Digital Marketing).
+      </p>
+      <p>
+        My interests focus on AI, consumer behavior, and data-driven marketing.
+      </p>
+    </div>
+
+    <!-- 你的照片 -->
+    <img src="photo.jpg" alt="My Photo">
+  </section>
+
 </body>
 </html>
