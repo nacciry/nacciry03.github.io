@@ -1,126 +1,537 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>倪诗睿 | 个人作品集</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>倪诗睿 | 数字营销</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:      #0a0a1a;
+    --surface: #12122a;
+    --panel:   #1a1a3a;
+    --border:  #2a2a6a;
+    --green:   #00ff88;
+    --cyan:    #00e5ff;
+    --yellow:  #ffe600;
+    --pink:    #ff4fa3;
+    --white:   #e8e8ff;
+    --muted:   #5a5a9a;
+    --pixel:   'Press Start 2P', monospace;
+    --body:    'Noto Sans SC', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: var(--body);
+    background-image: repeating-linear-gradient(
+      0deg, transparent, transparent 3px,
+      rgba(0,0,0,0.15) 3px, rgba(0,0,0,0.15) 4px
+    );
+  }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--green); }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: "Courier New", monospace;
-      background-color: #cfe8d5;
-    }
+  /* ── UTIL ── */
+  @keyframes blink { 0%,49%{opacity:1}50%,100%{opacity:0} }
+  @keyframes twinkle { 0%,100%{opacity:.8;transform:scale(1)}50%{opacity:.1;transform:scale(.5)} }
+  @keyframes hpPulse { 0%,100%{opacity:1}50%{opacity:.5} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)} }
+  .blink { animation: blink 1s step-end infinite; }
+  .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s,transform .7s; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
 
-    /* 像素风导航栏 */
-    nav {
-      background-color: #3a5f4d;
-      padding: 15px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-      border-bottom: 4px solid #2b4436;
-    }
+  .pixel-btn {
+    font-family: var(--pixel); font-size: .5rem; letter-spacing: .1em;
+    padding: .7rem 1.4rem; background: var(--green); color: var(--bg);
+    border: none; cursor: pointer; text-decoration: none; display: inline-block;
+    clip-path: polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,6px 100%,0 calc(100% - 6px));
+    transition: background .1s, transform .1s;
+  }
+  .pixel-btn:hover { background: var(--cyan); transform: translate(-2px,-2px); }
+  .pixel-btn.outline {
+    background: transparent; color: var(--green);
+    border: 2px solid var(--green); clip-path: none;
+  }
+  .pixel-btn.outline:hover { background: rgba(0,255,136,.1); color:var(--cyan); border-color:var(--cyan); }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-    }
+  .pixel-divider {
+    height: 3px; margin: 2rem 0;
+    background: repeating-linear-gradient(90deg,var(--border) 0,var(--border) 6px,transparent 6px,transparent 12px);
+  }
+  .section-label {
+    font-family: var(--pixel); font-size: .5rem; color: var(--green);
+    letter-spacing: .2em; margin-bottom: .5rem;
+  }
+  .section-label::before { content: '> '; }
+  .section-main-title {
+    font-family: var(--pixel); font-size: clamp(.8rem,2.5vw,1.1rem); line-height: 2;
+  }
+  .section-main-title .accent { color: var(--green); }
+  .section-wrapper { max-width: 1000px; margin: 0 auto; padding: 5rem 2rem; }
 
-    /* 第一屏 */
-    .hero {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 60px;
-    }
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    background: rgba(10,10,26,.95); border-bottom: 3px solid var(--border);
+    padding: 0 2rem; display: flex; align-items: center; justify-content: space-between;
+    height: 56px; backdrop-filter: blur(4px);
+  }
+  .nav-logo { font-family: var(--pixel); font-size: .65rem; color: var(--green); }
+  .nav-logo span { color: var(--cyan); }
+  .nav-links { display: flex; gap: 0; list-style: none; }
+  .nav-links li a {
+    font-family: var(--pixel); font-size: .42rem; letter-spacing: .08em;
+    color: var(--muted); text-decoration: none; padding: .5rem .9rem;
+    display: block; border: 1px solid transparent; transition: all .15s;
+  }
+  .nav-links li a:hover { color:var(--green); border:1px solid var(--green); background:rgba(0,255,136,.08); }
+  .nav-hp { font-family:var(--pixel); font-size:.4rem; color:var(--muted); display:flex; align-items:center; gap:.4rem; }
+  .hp-bar { display:flex; gap:2px; }
+  .hp-block { width:10px; height:10px; background:var(--green); animation:hpPulse 2s infinite; }
+  .hp-block:nth-child(2){animation-delay:.2s}.hp-block:nth-child(3){animation-delay:.4s}
 
-    .hero-text {
-      max-width: 50%;
-    }
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    padding: 7rem 2rem 4rem; position: relative; overflow: hidden;
+  }
+  .starfield { position:absolute; inset:0; z-index:0; overflow:hidden; }
+  .star {
+    position:absolute; width:3px; height:3px; background:var(--white);
+    animation: twinkle var(--d,3s) var(--delay,0s) infinite;
+  }
+  .ground {
+    position:absolute; bottom:0; left:0; right:0; height:6px;
+    background: repeating-linear-gradient(90deg,var(--green) 0,var(--green) 12px,transparent 12px,transparent 18px);
+  }
+  .hero-inner {
+    position:relative; z-index:1; display:grid;
+    grid-template-columns: auto 1fr; gap:4rem; align-items:center;
+    max-width:960px; width:100%;
+  }
 
-    h1 {
-      font-size: 40px;
-    }
+  /* 头像 */
+  .avatar-frame { position:relative; width:180px; flex-shrink:0; }
+  .avatar-border {
+    border: 4px solid var(--green);
+    box-shadow: inset 0 0 0 4px var(--bg), 0 0 0 8px var(--border), 0 0 20px rgba(0,255,136,.3);
+    position:relative; overflow:hidden; background:var(--panel); aspect-ratio:1;
+  }
+  .avatar-border img { width:100%; height:100%; object-fit:cover; display:block; filter:contrast(1.1) saturate(.9); }
+  .avatar-placeholder {
+    width:100%; height:100%; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:.5rem;
+    color:var(--muted); font-family:var(--pixel); font-size:.4rem; text-align:center; padding:1rem;
+  }
+  .avatar-pixel-char { font-size:3rem; line-height:1; }
+  .avatar-tag {
+    position:absolute; bottom:-12px; left:50%; transform:translateX(-50%);
+    background:var(--green); color:var(--bg);
+    font-family:var(--pixel); font-size:.4rem; padding:3px 8px; white-space:nowrap;
+  }
+  .corner { position:absolute; width:10px; height:10px; }
+  .corner-tl{top:-2px;left:-2px;border-top:3px solid var(--cyan);border-left:3px solid var(--cyan)}
+  .corner-tr{top:-2px;right:-2px;border-top:3px solid var(--cyan);border-right:3px solid var(--cyan)}
+  .corner-bl{bottom:-2px;left:-2px;border-bottom:3px solid var(--cyan);border-left:3px solid var(--cyan)}
+  .corner-br{bottom:-2px;right:-2px;border-bottom:3px solid var(--cyan);border-right:3px solid var(--cyan)}
 
-    p {
-      font-size: 16px;
-      line-height: 1.8;
-    }
+  .hero-greeting { font-family:var(--pixel); font-size:.55rem; color:var(--cyan); margin-bottom:1rem; letter-spacing:.1em; }
+  .hero-greeting::before { content:'▶ '; }
+  .hero-name { font-family:var(--pixel); font-size:clamp(1.2rem,4vw,2rem); line-height:1.6; margin-bottom:.5rem; }
+  .hero-name .hl { color:var(--green); }
+  .hero-sub { font-family:var(--pixel); font-size:.55rem; color:var(--yellow); margin-bottom:1.5rem; letter-spacing:.08em; }
+  .hero-desc {
+    font-size:.9rem; line-height:1.9; color:rgba(232,232,255,.65);
+    max-width:480px; margin-bottom:2rem;
+    border-left:3px solid var(--green); padding-left:1rem;
+  }
+  .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
+  animation: fadeUp .8s forwards;
 
-    /* 像素卡片风 */
-    .card {
-      background: #ffffff;
-      padding: 20px;
-      margin: 40px 60px;
-      border: 4px solid #2b4436;
-      box-shadow: 6px 6px 0 #2b4436;
-    }
+  /* ── EDUCATION ── */
+  #education { background: var(--surface); }
+  .edu-card {
+    padding: 2.5rem; margin-bottom: 1.5rem;
+    background: var(--panel); border: 3px solid var(--border);
+    position: relative; transition: border-color .2s, box-shadow .2s;
+  }
+  .edu-card:hover { border-color: var(--green); box-shadow: 0 0 16px rgba(0,255,136,.15); }
+  .edu-card::before {
+    content:''; position:absolute; top:0; left:0;
+    border-top:14px solid var(--green); border-right:14px solid transparent;
+  }
+  .edu-school-row { display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+  .edu-school-name { font-family:var(--pixel); font-size:clamp(.6rem,1.8vw,.85rem); color:var(--cyan); line-height:2; }
+  .edu-period {
+    font-family:var(--pixel); font-size:.45rem; color:var(--yellow);
+    background:rgba(255,230,0,.1); border:1px solid var(--yellow);
+    padding:.3rem .7rem; white-space:nowrap; align-self:flex-start;
+  }
+  .edu-major { font-size:.95rem; color:rgba(232,232,255,.75); margin-bottom:1.5rem; }
+  .edu-major strong { color:var(--white); }
+  .edu-stats-row { display:flex; gap:2.5rem; flex-wrap:wrap; margin-bottom:2rem; }
+  .stat-item-label { font-family:var(--pixel); font-size:.4rem; color:var(--muted); letter-spacing:.1em; margin-bottom:.4rem; }
+  .stat-item-value { font-family:var(--pixel); font-size:clamp(.8rem,2vw,1.1rem); color:var(--green); }
+  .stat-item-value .unit { font-size:.45rem; color:var(--muted); margin-left:4px; }
+  .courses-title { font-family:var(--pixel); font-size:.45rem; color:var(--muted); letter-spacing:.15em; margin-bottom:1rem; }
+  .courses-title::before { content:'// '; color:var(--green); }
+  .course-tags { display:flex; flex-wrap:wrap; gap:.5rem; }
+  .course-tag {
+    font-family:var(--pixel); font-size:.42rem; padding:.4rem .8rem;
+    border:2px solid var(--border); color:var(--cyan);
+    background:rgba(0,229,255,.05); transition:all .15s; letter-spacing:.05em;
+  }
+  .course-tag:hover { border-color:var(--cyan); background:rgba(0,229,255,.12); transform:translate(-2px,-2px); }
 
-    /* 图片 */
-    .hero img {
-      width: 260px;
-      image-rendering: pixelated;
-      border: 4px solid #2b4436;
-    }
+  /* 荣誉 */
+  .honors-section { margin-top:3rem; }
+  .honors-title { font-family:var(--pixel); font-size:.55rem; color:var(--yellow); margin-bottom:1.5rem; letter-spacing:.1em; }
+  .honors-title::before { content:'★ '; }
+  .honor-items { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; }
+  .honor-card {
+    background:var(--bg); border:2px solid var(--border);
+    padding:1.5rem; display:flex; gap:1rem; align-items:flex-start;
+    transition:border-color .2s,background .2s; position:relative; overflow:hidden;
+  }
+  .honor-card:hover { border-color:var(--yellow); background:rgba(255,230,0,.04); }
+  .honor-badge { font-size:1.8rem; flex-shrink:0; filter:drop-shadow(0 0 6px rgba(255,230,0,.5)); }
+  .honor-name { font-size:.9rem; font-weight:700; color:var(--white); margin-bottom:.3rem; line-height:1.5; }
+  .honor-meta { font-family:var(--pixel); font-size:.38rem; color:var(--yellow); letter-spacing:.08em; }
 
-    ul {
-      padding-left: 20px;
-    }
-  </style>
+  /* ── SKILLS ── */
+  #skills {}
+  .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; }
+  .skill-cat-title {
+    font-family:var(--pixel); font-size:.5rem; color:var(--pink);
+    letter-spacing:.15em; margin-bottom:1.2rem; padding-bottom:.5rem; border-bottom:2px solid var(--border);
+  }
+  .skill-cat-title::before{content:'[';color:var(--muted)}.skill-cat-title::after{content:']';color:var(--muted)}
+  .skill-row { display:flex; align-items:center; gap:.8rem; margin-bottom:1rem; }
+  .skill-name { font-size:.82rem; color:var(--white); width:130px; flex-shrink:0; }
+  .skill-bar-wrap { flex:1; height:10px; background:var(--border); border:1px solid rgba(255,255,255,.08); position:relative; }
+  .skill-bar-fill {
+    height:100%; width:0%; transition:width 1.2s cubic-bezier(.4,0,.2,1);
+    background: repeating-linear-gradient(
+      90deg, var(--bar-color,var(--green)) 0,var(--bar-color,var(--green)) 10px,
+      rgba(0,0,0,.3) 10px,rgba(0,0,0,.3) 12px
+    );
+    position:relative;
+  }
+  .skill-bar-fill::after {
+    content:''; position:absolute; right:0; top:0; bottom:0;
+    width:3px; background:white; opacity:.8; animation:blink .5s step-end infinite;
+  }
+  .skill-level { font-family:var(--pixel); font-size:.38rem; color:var(--muted); width:28px; text-align:right; flex-shrink:0; }
+
+  /* ── CONTACT ── */
+  #contact { background:var(--surface); }
+  .contact-box {
+    max-width:640px; margin:0 auto; text-align:center;
+    padding:3rem; background:var(--panel); border:3px solid var(--border); position:relative;
+  }
+  .contact-box::before,.contact-box::after {
+    content:'★ ★ ★'; position:absolute; left:50%; transform:translateX(-50%);
+    font-family:var(--pixel); font-size:.4rem; color:var(--muted); letter-spacing:.5rem;
+  }
+  .contact-box::before{top:-1rem}.contact-box::after{bottom:-1rem}
+  .contact-prompt { font-family:var(--pixel); font-size:.5rem; color:var(--green); margin-bottom:.5rem; }
+  .contact-big { font-family:var(--pixel); font-size:clamp(.8rem,3vw,1.4rem); color:var(--white); line-height:2; margin-bottom:2rem; }
+  .contact-links { display:flex; flex-direction:column; gap:.8rem; margin-bottom:2rem; }
+  .contact-row {
+    display:flex; align-items:center; gap:1rem;
+    background:var(--bg); border:2px solid var(--border); padding:.8rem 1.2rem; transition:border-color .2s;
+  }
+  .contact-row:hover { border-color:var(--green); }
+  .contact-icon { font-size:1.1rem; width:24px; flex-shrink:0; }
+  .contact-label { font-family:var(--pixel); font-size:.4rem; color:var(--muted); width:70px; flex-shrink:0; }
+  .contact-value { font-size:.85rem; color:var(--cyan); }
+
+  /* ── FOOTER ── */
+  footer { background:var(--bg); border-top:3px solid var(--border); padding:1.5rem 2rem; text-align:center; }
+  .footer-text { font-family:var(--pixel); font-size:.4rem; color:var(--muted); letter-spacing:.1em; line-height:2.5; }
+  .footer-text .green { color:var(--green); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:680px){
+    nav{padding:0 1rem}
+    .nav-links li a{font-size:.35rem;padding:.4rem .5rem}
+    .hero-inner{grid-template-columns:1fr;text-align:center;gap:2rem}
+    .avatar-frame{margin:0 auto;width:140px}
+    .hero-desc{border-left:none;border-top:3px solid var(--green);padding:1rem 0 0}
+    .hero-btns{justify-content:center}
+    .edu-school-row{flex-direction:column}
+  }
+</style>
 </head>
-
 <body>
 
-  <!-- 导航栏 -->
-  <nav>
-    <div><strong>倪诗睿</strong></div>
-    <div>
-      <a href="#">首页</a>
-      <a href="#">关于我</a>
-      <a href="#">项目</a>
-      <a href="#">联系</a>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">倪<span>.诗.睿</span></div>
+  <ul class="nav-links">
+    <li><a href="#hero">首页</a></li>
+    <li><a href="#education">教育</a></li>
+    <li><a href="#skills">技能</a></li>
+    <li><a href="#contact">联系</a></li>
+  </ul>
+  <div class="nav-hp">
+    HP
+    <div class="hp-bar">
+      <div class="hp-block"></div>
+      <div class="hp-block"></div>
+      <div class="hp-block"></div>
     </div>
-  </nav>
-
-  <!-- 第一屏 -->
-  <section class="hero">
-    <div class="hero-text">
-      <h1>你好，我是倪诗睿 👋</h1>
-
-      <p>山东大学商学院｜工商管理（数字营销方向）</p>
-
-      <p>
-        具备市场营销与数据分析复合背景，
-        熟悉消费者行为与品牌管理，
-        同时掌握Python、SQL等数据分析工具。
-      </p>
-    </div>
-
-    <!-- 你的照片 -->
-    <img src="photo.jpg" alt="个人照片">
-  </section>
-
-  <!-- About Me -->
-  <div class="card">
-    <h2>关于我</h2>
-
-    <p>
-      GPA 83.38，专业排名前30%，具备良好的学术基础与学习能力。
-    </p>
-
-    <p>
-      在数据分析方面，能够运用统计方法与技术工具，
-      将数据分析应用于营销与用户研究场景。
-    </p>
-
-    <h3>荣誉奖项</h3>
-    <ul>
-      <li>山东大学优秀毕业生（2026届）</li>
-      <li>山东大学学业奖学金</li>
-    </ul>
   </div>
+</nav>
 
+<!-- HERO -->
+<section id="hero">
+  <div class="starfield" id="starfield"></div>
+  <div class="ground"></div>
+  <div class="hero-inner">
+
+    <!-- 头像 -->
+    <div class="avatar-frame">
+      <div class="avatar-border">
+        <!--
+        ╔══════════════════════════════════╗
+        ║      📸 如何插入你的照片           ║
+        ╠══════════════════════════════════╣
+        ║ 1. 把照片文件放进 GitHub 仓库，     ║
+        ║    和 index.html 放在同一个目录，   ║
+        ║    命名为 photo.jpg（或 .png）     ║
+        ║ 2. 删掉下面整个 avatar-placeholder ║
+        ║    的 <div>...</div>              ║
+        ║ 3. 取消下面这行的注释（删掉 /* */）  ║
+        ╚══════════════════════════════════╝
+        -->
+        <!-- <img src="photo.jpg" alt="倪诗睿"> -->
+        <div class="avatar-placeholder">
+          <div class="avatar-pixel-char">👤</div>
+          <div>上传照片<br>见注释说明</div>
+        </div>
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+      </div>
+      <div class="avatar-tag">PLAYER 1</div>
+    </div>
+
+    <!-- 文字 -->
+    <div class="hero-text">
+      <div class="hero-greeting">HELLO, WORLD!</div>
+      <h1 class="hero-name"><span class="hl">倪诗睿</span><br>NI SHIRUI</h1>
+      <div class="hero-sub">数字营销专业 · 山东大学 2026届</div>
+      <p class="hero-desc">
+        热爱用数据讲故事，用创意驱动增长。<br>
+        专注于数字营销策略、用户洞察与品牌传播，<br>
+        期待用所学为品牌创造真实价值。
+      </p>
+      <div class="hero-btns">
+        <a href="#education" class="pixel-btn">查看简历 ▶</a>
+        <a href="#contact" class="pixel-btn outline">联系我</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-wrapper">
+    <div class="section-header reveal">
+      <div class="section-label">STAGE 01</div>
+      <div class="section-main-title">教育背景 <span class="accent">EDUCATION</span></div>
+    </div>
+
+    <div class="edu-card reveal">
+      <div class="edu-school-row">
+        <div class="edu-school-name">🎓 山东大学</div>
+        <div class="edu-period">2022 — 2026</div>
+      </div>
+      <div class="edu-major">
+        <strong>商学院 · 工商管理（数字营销方向）</strong><br>
+        本科 · 管理学学士
+      </div>
+      <div class="edu-stats-row">
+        <div class="stat-item">
+          <div class="stat-item-label">SCORE / 综合成绩</div>
+          <div class="stat-item-value">83.38<span class="unit">/100</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item-label">RANK / 专业排名</div>
+          <div class="stat-item-value">TOP<span class="unit"> 30%</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item-label">STATUS</div>
+          <div class="stat-item-value" style="color:var(--cyan)">应届<span class="unit"> 毕业生</span></div>
+        </div>
+      </div>
+      <div class="pixel-divider"></div>
+      <div class="courses-title">主修课程 CORE COURSES</div>
+      <div class="course-tags">
+        <span class="course-tag">市场营销学</span>
+        <span class="course-tag">销售管理</span>
+        <span class="course-tag">消费者行为学</span>
+        <span class="course-tag">数字营销</span>
+        <span class="course-tag">品牌管理</span>
+        <span class="course-tag">统计学</span>
+        <span class="course-tag">Python</span>
+        <span class="course-tag">SQL</span>
+      </div>
+    </div>
+
+    <!-- 荣誉 -->
+    <div class="honors-section reveal">
+      <div class="honors-title">荣誉奖项 ACHIEVEMENTS</div>
+      <div class="honor-items">
+        <div class="honor-card">
+          <div class="honor-badge">🏆</div>
+          <div>
+            <div class="honor-name">山东大学优秀毕业生</div>
+            <div class="honor-meta">2026届 · 山东大学</div>
+          </div>
+        </div>
+        <div class="honor-card">
+          <div class="honor-badge">🥇</div>
+          <div>
+            <div class="honor-name">山东大学学业奖学金</div>
+            <div class="honor-meta">学业优秀 · 山东大学</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background:var(--surface)">
+  <div class="section-wrapper">
+    <div class="section-header reveal">
+      <div class="section-label">STAGE 02</div>
+      <div class="section-main-title">专业技能 <span class="accent">SKILLS</span></div>
+    </div>
+    <div class="skills-grid">
+      <div class="reveal">
+        <div class="skill-cat-title">营销能力</div>
+        <div class="skill-row">
+          <span class="skill-name">数字营销策略</span>
+          <div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="85" style="--bar-color:var(--green)"></div></div>
+          <span class="skill-level">85</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">品牌管理</span>
+          <div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="80" style="--bar-color:var(--green)"></div></div>
+          <span class="skill-level">80</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">用户洞察分析</span>
+          <div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="78" style="--bar-color:var(--green)"></div></div>
+          <span class="skill-level">78</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">内容运营</span>
+          <div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="75" style="--bar-color:var(--green)"></div></div>
+          <span class="skill-level">75</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="skill-cat-title">数据工具</div>
+        <div class="skill-row">
+          <span class="skill-name">Excel / 数据分析</span>
+          <div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="82" style="--bar-color:var(--cyan)"></div></div>
+          <span class="skill-level">82</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Python</span>
+          <div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="70" style="--bar-color:var(--cyan)"></div></div>
+          <span class="skill-level">70</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">SQL</span>
+          <div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="68" style="--bar-color:var(--cyan)"></div></div>
+          <span class="skill-level">68</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">统计分析</span>
+          <div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="75" style="--bar-color:var(--cyan)"></div></div>
+          <span class="skill-level">75</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-wrapper">
+    <div class="section-header reveal" style="text-align:center">
+      <div class="section-label" style="display:inline-block">FINAL STAGE</div>
+      <div class="section-main-title">联系我 <span class="accent">CONTACT</span></div>
+    </div>
+    <div class="contact-box reveal">
+      <div class="contact-prompt">&gt; 按下开始键，一起共创精彩_<span class="blink">|</span></div>
+      <div class="contact-big">GAME START?</div>
+      <div class="contact-links">
+        <!-- 【请替换成你的真实联系方式】 -->
+        <div class="contact-row">
+          <span class="contact-icon">📧</span>
+          <span class="contact-label">EMAIL</span>
+          <span class="contact-value">yourname@example.com</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon">💬</span>
+          <span class="contact-label">微信</span>
+          <span class="contact-value">your_wechat_id</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon">📍</span>
+          <span class="contact-label">地点</span>
+          <span class="contact-value">山东 · 求职中</span>
+        </div>
+      </div>
+      <a href="mailto:yourname@example.com" class="pixel-btn">发送消息 ✉</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-text">
+    © 2026 <span class="green">倪诗睿 NI SHIRUI</span> · MADE WITH ♥ · ALL RIGHTS RESERVED<br>
+    <span class="blink">█</span> INSERT COIN TO CONTINUE
+  </div>
+</footer>
+
+<script>
+  // 像素星空
+  (function(){
+    const sf = document.getElementById('starfield');
+    for(let i=0;i<80;i++){
+      const s = document.createElement('div');
+      s.className = 'star';
+      s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;`
+        +`--d:${2+Math.random()*4}s;--delay:${Math.random()*4}s;`
+        +`width:${Math.random()<.2?6:3}px;height:${Math.random()<.2?6:3}px;`
+        +`opacity:${.3+Math.random()*.7};`;
+      sf.appendChild(s);
+    }
+  })();
+
+  // 滚动进入动画 + 技能条
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        e.target.querySelectorAll('.skill-bar-fill').forEach(b=>{ b.style.width=b.dataset.width+'%'; });
+      }
+    });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
