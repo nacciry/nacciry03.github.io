@@ -694,6 +694,16 @@
 
 
 
+<!-- ══════════════════════════════════════════
+     项目经历板块
+     粘贴位置：插入到实习经历 section 的【下方】，
+     也就是 <!-- SKILLS --> 注释的上方
+     （如果你已经插入了实习经历，就紧接在实习经历的
+      </section> 结束标签下方粘贴）
+     
+     同时记得把技能区的 STAGE 03 改成 STAGE 04
+═══════════════════════════════════════════ -->
+
 <!-- PROJECTS -->
 <section id="projects" style="background:var(--surface)">
   <div class="section-wrapper">
@@ -705,59 +715,52 @@
     <!-- ── 项目卡片：创新大赛 ── -->
     <div class="edu-card reveal" style="margin-bottom:1rem">
 
-      <!-- 顶部：金奖横幅 + 项目名称 -->
-
-      <!-- 金奖全宽横幅 -->
-      <div style="
-        margin:-2.5rem -2.5rem 2rem -2.5rem;
-        padding:1.1rem 2rem;
-        background:linear-gradient(90deg,#7a5500,#b8860b,#ffe600,#ffb700,#b8860b,#7a5500);
-        background-size:200% 100%;
-        animation:goldShine 3s linear infinite;
-        display:flex;align-items:center;justify-content:center;gap:1.2rem;
-        position:relative;overflow:hidden;
-      ">
-        <!-- 扫光效果 -->
-        <div style="
-          position:absolute;inset:0;
-          background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.25) 50%,transparent 60%);
-          animation:goldSweep 2.5s ease-in-out infinite;
-          pointer-events:none;
-        "></div>
-        <span style="font-size:1.8rem;filter:drop-shadow(0 0 8px rgba(255,200,0,.8))">🏆</span>
-        <div style="text-align:center">
-          <div style="
-            font-family:var(--pixel);font-size:clamp(.55rem,2vw,.85rem);
-            color:#1a1000;letter-spacing:.15em;line-height:2;
-            text-shadow:0 1px 2px rgba(255,255,255,.3);
-          ">国家金奖</div>
-          <div style="
-            font-family:var(--pixel);font-size:.38rem;color:rgba(30,15,0,.7);
-            letter-spacing:.1em;
-          ">中国国际大学生创新大赛 2025</div>
+      <!-- 顶部：项目名称 + 金奖徽章 -->
+      <div class="edu-school-row" style="align-items:flex-start">
+        <div>
+          <div class="edu-school-name" style="color:var(--yellow)">
+            🤖 投影交互式 AI 陪伴机器人
+          </div>
+          <div style="font-size:.85rem;color:rgba(232,232,255,.55);margin-top:.3rem;font-family:var(--body)">
+            中国国际大学生创新大赛（2025）· 商业组组长
+          </div>
         </div>
-        <span style="font-size:1.8rem;filter:drop-shadow(0 0 8px rgba(255,200,0,.8))">🏆</span>
+        <!-- 金奖徽章：比之前大，带扫光，下方附链接 -->
+        <div style="flex-shrink:0;text-align:center">
+          <div style="
+            font-family:var(--pixel);font-size:.65rem;letter-spacing:.12em;
+            background:linear-gradient(135deg,#7a5500,#ffe600,#b8860b,#ffe600,#7a5500);
+            background-size:250% 100%;
+            animation:goldShine 3s linear infinite;
+            color:#1a1000;padding:.75rem 1.8rem;white-space:nowrap;
+            box-shadow:0 0 22px rgba(255,200,0,.5),0 0 44px rgba(255,200,0,.15);
+            position:relative;overflow:hidden;
+          ">
+            <div style="
+              position:absolute;inset:0;
+              background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.3) 50%,transparent 60%);
+              animation:goldSweep 2.5s ease-in-out infinite;
+              pointer-events:none;
+            "></div>
+            🥇 国家金奖
+          </div>
+          <!-- 获奖公示链接：把 href 里的内容替换成你的公众号文章链接 -->
+          <a href="YOUR_WECHAT_ARTICLE_URL_HERE" target="_blank" style="
+            display:inline-block;margin-top:.5rem;
+            font-family:var(--pixel);font-size:.35rem;
+            color:var(--muted);letter-spacing:.08em;
+            text-decoration:none;border-bottom:1px dashed var(--muted);
+            transition:color .2s,border-color .2s;
+          "
+          onmouseenter="this.style.color='var(--yellow)';this.style.borderColor='var(--yellow)'"
+          onmouseleave="this.style.color='var(--muted)';this.style.borderColor='var(--muted)'"
+          >📎 查看获奖公示 ↗</a>
+        </div>
       </div>
       <style>
-        @keyframes goldShine {
-          0%   { background-position:0% 0; }
-          100% { background-position:200% 0; }
-        }
-        @keyframes goldSweep {
-          0%   { transform:translateX(-100%); }
-          60%,100% { transform:translateX(200%); }
-        }
+        @keyframes goldShine { 0%{background-position:0%} 100%{background-position:250%} }
+        @keyframes goldSweep { 0%{transform:translateX(-100%)} 60%,100%{transform:translateX(200%)} }
       </style>
-
-      <!-- 项目名称行 -->
-      <div>
-        <div class="edu-school-name" style="color:var(--yellow)">
-          🤖 投影交互式 AI 陪伴机器人
-        </div>
-        <div style="font-size:.85rem;color:rgba(232,232,255,.55);margin-top:.3rem;font-family:var(--body)">
-          中国国际大学生创新大赛（2025）· 商业组组长
-        </div>
-      </div>
 
       <!-- 一句话项目定位 -->
       <div style="
@@ -964,20 +967,163 @@
         <strong style="color:var(--white)">先问「用户真正在痛什么」，再问「我们能做什么」</strong>。
       </div>
 
-    </div><!-- /项目卡片 -->
+    </div><!-- /项目卡片 1 -->
+
+
+    <!-- ── 项目卡片 2：零食门店营销 ── -->
+    <div class="edu-card reveal" style="margin-bottom:1rem">
+
+      <!-- 顶部 -->
+      <div class="edu-school-row" style="align-items:flex-start">
+        <div>
+          <div class="edu-school-name" style="color:var(--cyan)">
+            🛒 零食门店终端营销与促销转化
+          </div>
+          <div style="font-size:.85rem;color:rgba(232,232,255,.55);margin-top:.3rem;font-family:var(--body)">
+            实战项目 · 营销策划负责人
+          </div>
+        </div>
+        <div style="flex-shrink:0;text-align:center">
+          <div style="
+            font-family:var(--pixel);font-size:.52rem;letter-spacing:.1em;
+            border:2px solid var(--cyan);color:var(--cyan);
+            padding:.6rem 1.4rem;white-space:nowrap;
+            box-shadow:0 0 14px rgba(0,229,255,.2);
+          ">📊 真实商业落地</div>
+          <div style="font-family:var(--pixel);font-size:.35rem;color:var(--muted);margin-top:.4rem;letter-spacing:.06em">
+            全程数据追踪 · 量化成果
+          </div>
+        </div>
+      </div>
+
+      <!-- 项目背景一句话 -->
+      <div style="
+        margin:1.5rem 0;padding:1rem 1.5rem;
+        background:rgba(0,229,255,.06);border-left:3px solid var(--cyan);
+        font-size:.9rem;line-height:1.8;color:rgba(232,232,255,.75);
+      ">
+        主动发现校园周边经营困难的连锁零食门店，
+        以<strong style="color:var(--white)">一线洞察切入、社群运营驱动、借势活动收割</strong>
+        的完整链路，在约两个月营销周期内实现
+        <strong style="color:var(--cyan)">销售额环比提升约 20%，重点 SKU 库存积压率下降约 15%</strong>。
+      </div>
+
+      <div class="pixel-divider"></div>
+      <div style="font-family:var(--pixel);font-size:.45rem;color:var(--muted);letter-spacing:.15em;margin-bottom:1.5rem">
+        // 三阶段营销路径 THREE-PHASE APPROACH
+      </div>
+
+      <!-- 三阶段时间轴 -->
+      <div style="position:relative;padding-left:1.5rem;margin-bottom:2rem">
+        <div style="
+          position:absolute;left:0;top:0;bottom:0;width:2px;
+          background:linear-gradient(to bottom,var(--cyan),var(--green),var(--pink));
+        "></div>
+
+        <!-- 阶段 1：一线洞察 -->
+        <div style="margin-bottom:2rem;position:relative">
+          <div style="position:absolute;left:-1.85rem;top:.25rem;width:8px;height:8px;background:var(--cyan);box-shadow:0 0 6px var(--cyan)"></div>
+          <div style="font-family:var(--pixel);font-size:.42rem;color:var(--cyan);margin-bottom:.5rem;line-height:1.8">
+            PHASE 01 · 一线调研 → 精准提案
+          </div>
+          <p style="font-size:.85rem;line-height:1.88;color:rgba(232,232,255,.65);margin-bottom:.8rem">
+            对比校外两家同类零食店的客流差异，主动蹲点观察，
+            识别出目标门店的三个核心痛点：
+            <strong style="color:var(--white)">招牌遮挡、价签视觉弱、货架动线混乱</strong>。
+            针对性制定改善方案后主动联系店主，
+            以解决方案而非"求合作"的姿态成功建立合作关系。
+          </p>
+          <div style="display:flex;gap:.4rem;flex-wrap:wrap">
+            <span class="course-tag" style="border-color:var(--cyan);color:var(--cyan)">竞争环境观察</span>
+            <span class="course-tag" style="border-color:var(--cyan);color:var(--cyan)">痛点提炼</span>
+            <span class="course-tag" style="border-color:var(--cyan);color:var(--cyan)">方案驱动提案</span>
+          </div>
+        </div>
+
+        <!-- 阶段 2：社群精细化运营（亮点） -->
+        <div style="margin-bottom:2rem;position:relative">
+          <div style="position:absolute;left:-1.85rem;top:.25rem;width:8px;height:8px;background:var(--green);box-shadow:0 0 6px var(--green)"></div>
+          <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:.5rem;flex-wrap:wrap">
+            <div style="font-family:var(--pixel);font-size:.42rem;color:var(--green);line-height:1.8">
+              PHASE 02 · 社群运营 → 策略迭代
+            </div>
+            <div style="font-family:var(--pixel);font-size:.35rem;background:rgba(0,255,136,.12);color:var(--green);border:1px solid var(--green);padding:.2rem .6rem">
+              ★ 亮点
+            </div>
+          </div>
+          <p style="font-size:.85rem;line-height:1.88;color:rgba(232,232,255,.65);margin-bottom:.8rem">
+            通过转发集赞、邀好友入群等活动冷启动，建立 4 个社群。
+            <br>
+            初期沿用周边商家惯用的「有活动才发消息」策略，
+            发现<strong style="color:var(--white)">退群率居高不下</strong>。
+            复盘后转换思路——改为每日分享
+            <strong style="color:var(--white)">校园周边美食、零食测评等非促销内容</strong>，
+            以内容价值驱动留存，群活跃度与用户黏性显著提升。
+            <br><br>
+            <span style="color:var(--cyan);font-size:.82rem">
+              ↳ 核心洞察：社群的本质是<strong style="color:var(--white)">关系</strong>，不是广告位。
+              先给价值，再谈转化。
+            </span>
+          </p>
+          <div style="display:flex;gap:.4rem;flex-wrap:wrap">
+            <span class="course-tag">私域社群运营</span>
+            <span class="course-tag">内容驱动留存</span>
+            <span class="course-tag">策略复盘迭代</span>
+          </div>
+        </div>
+
+        <!-- 阶段 3：借势活动 -->
+        <div style="position:relative">
+          <div style="position:absolute;left:-1.85rem;top:.25rem;width:8px;height:8px;background:var(--pink);box-shadow:0 0 6px var(--pink)"></div>
+          <div style="font-family:var(--pixel);font-size:.42rem;color:var(--pink);margin-bottom:.5rem;line-height:1.8">
+            PHASE 03 · 借势运动会 → 组合爆品
+          </div>
+          <p style="font-size:.85rem;line-height:1.88;color:rgba(232,232,255,.65);margin-bottom:.8rem">
+            洞察到运动会期间班级团建需求集中爆发的窗口，
+            在社群内发问卷摸底零食偏好，
+            结合<strong style="color:var(--white)">受欢迎程度 × 高库存 SKU</strong>双维度选品，
+            组合推出 3 款不同预算的零食礼包。
+            <br><br>
+            通过班级班委的<strong style="color:var(--white)">「裂变式」传播</strong>触达全年级，
+            叠加店主已有的<strong style="color:var(--white)">校园即时配送资源</strong>
+            实现从社群流量到订单的高效转化。
+          </p>
+          <div style="display:flex;gap:.4rem;flex-wrap:wrap">
+            <span class="course-tag" style="border-color:var(--pink);color:var(--pink)">借势营销</span>
+            <span class="course-tag" style="border-color:var(--pink);color:var(--pink)">选品策略</span>
+            <span class="course-tag" style="border-color:var(--pink);color:var(--pink)">资源整合</span>
+            <span class="course-tag" style="border-color:var(--pink);color:var(--pink)">裂变传播</span>
+          </div>
+        </div>
+      </div><!-- /时间轴 -->
+
+      <!-- 底部总结 -->
+      <div style="
+        padding:1.2rem 1.5rem;
+        background:rgba(0,229,255,.05);border-left:3px solid var(--cyan);
+        font-size:.87rem;line-height:1.9;color:rgba(232,232,255,.6);
+      ">
+        <span style="font-family:var(--pixel);font-size:.42rem;color:var(--cyan)">// TAKEAWAY</span><br>
+        好的营销不是花钱投广告，
+        而是<strong style="color:var(--white)">找到用户在哪、他们真正需要什么、什么时机开口最有效</strong>。
+        每一步都是从观察出发，用数据验证，用迭代收口。
+      </div>
+
+    </div><!-- /项目卡片 2 -->
 
   </div>
 </section>
 
 <!--
   ────────────────────────────────
-  粘贴完成后，请同步修改以下内容：
+  粘贴完成后，请同步修改：
   1. 技能区的 STAGE 03 → 改为 STAGE 04
-  2. 如果已有实习经历板块，把导航栏里加上项目入口：
-     在 <li><a href="#internship">实习</a></li> 下方加：
+  2. 导航栏加入口（在实习那行下方）：
      <li><a href="#projects">项目</a></li>
+  3. 把 YOUR_WECHAT_ARTICLE_URL_HERE
+     替换成你的公众号文章真实链接
   ────────────────────────────────
--->
+  ────────────────────────────────
 -->
 <!-- CONTACT -->
 <section id="contact">
