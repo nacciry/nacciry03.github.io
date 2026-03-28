@@ -728,16 +728,19 @@
             "></div>
             🥇 国家金奖
           </div>
-          <!-- 获奖公示链接：把 href 里的内容替换成你的公众号文章链接 -->
-          <a href="YOUR_WECHAT_ARTICLE_URL_HERE" target="_blank" style="
-            display:inline-block;margin-top:.5rem;
-            font-family:var(--pixel);font-size:.35rem;
-            color:var(--muted);letter-spacing:.08em;
-            text-decoration:none;border-bottom:1px dashed var(--muted);
-            transition:color .2s,border-color .2s;
-          "
-          onmouseenter="this.style.color='var(--yellow)';this.style.borderColor='var(--yellow)'"
-          onmouseleave="this.style.color='var(--muted)';this.style.borderColor='var(--muted)'"
+        <!-- 获奖公示链接：把 href 里的内容替换成你的公众号文章链接 -->
+<a href="https://mp.weixin.qq.com/s/aRJcgUnsXkF5vS1WsIS3ug" target="_blank" style="
+  display:inline-flex;align-items:center;gap:.4rem;
+  margin-top:.7rem;padding:.45rem 1rem;
+  font-family:var(--pixel);font-size:.48rem;
+  color:var(--yellow);letter-spacing:.08em;
+  text-decoration:none;
+  border:1px solid rgba(255,230,0,.45);
+  background:rgba(255,230,0,.07);
+  transition:all .2s;white-space:nowrap;
+"
+onmouseenter="this.style.background='rgba(255,230,0,.18)';this.style.borderColor='var(--yellow)';this.style.boxShadow='0 0 10px rgba(255,200,0,.3)'"
+onmouseleave="this.style.background='rgba(255,230,0,.07)';this.style.borderColor='rgba(255,230,0,.45)';this.style.boxShadow='none'"
           >📎 查看获奖公示 ↗</a>
         </div>
       </div>
@@ -1098,48 +1101,164 @@
   </div>
 </section>
 
-<!--
-  ────────────────────────────────
-  粘贴完成后，请同步修改：
-  1. 技能区的 STAGE 03 → 改为 STAGE 04
-  2. 导航栏加入口（在实习那行下方）：
-     <li><a href="#projects">项目</a></li>
-  3. 把 YOUR_WECHAT_ARTICLE_URL_HERE
-     替换成你的公众号文章真实链接
-  ────────────────────────────────
-  ────────────────────────────────
--->
 
-  <!-- 校园经历 - Campus Experience -->
-<section id="campus-experience" style="background: var(--bg)">
+
+<!-- ══════════════════════════════════════════
+     校园经历板块
+     粘贴位置：插入到项目经历 </section> 的【下方】，
+     技能 <!-- SKILLS --> 注释的【上方】
+     
+     同时记得：
+     - 技能区 STAGE 04 → 改为 STAGE 05
+     - 导航栏加：<li><a href="#campus">校园</a></li>
+═══════════════════════════════════════════ -->
+
+<!-- CAMPUS -->
+<section id="campus" style="background:var(--bg)">
   <div class="section-wrapper">
     <div class="section-header reveal">
-      <div class="section-label">STAGE 02</div>
-      <div class="section-main-title">校园经历 <span class="accent">CAMPUS EXPERIENCE</span></div>
+      <div class="section-label">STAGE 04</div>
+      <div class="section-main-title">校园经历 <span class="accent">CAMPUS</span></div>
     </div>
 
+    <!-- 主卡片 -->
     <div class="edu-card reveal">
-      <div class="edu-major">
-        <strong>商学院青年志愿者协会 副部长</strong><br>
-        <span style="color: var(--muted)">2022年10月 — 2024年10月</span>
+
+      <!-- 顶部：职位 + 任期 -->
+      <div class="edu-school-row" style="align-items:flex-start">
+        <div>
+          <div class="edu-school-name" style="color:var(--green)">
+            🌱 山东大学商学院青年志愿者协会
+          </div>
+          <div style="font-size:.85rem;color:rgba(232,232,255,.55);margin-top:.3rem;font-family:var(--body)">
+            副部长 · 活动策划与运营负责人
+          </div>
+        </div>
+        <div class="edu-period">2022.10 — 2024.10</div>
       </div>
-      
+
+      <!-- 数据看板：三个核心数字 -->
+      <div style="
+        display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+        margin:1.8rem 0;
+      ">
+        <div style="
+          background:var(--bg);border:2px solid var(--border);
+          padding:1.4rem 1rem;text-align:center;position:relative;overflow:hidden;
+          transition:border-color .2s;
+        "
+        onmouseenter="this.style.borderColor='var(--green)'"
+        onmouseleave="this.style.borderColor='var(--border)'"
+        >
+          <div style="position:absolute;top:0;left:0;border-top:8px solid var(--green);border-right:8px solid transparent"></div>
+          <div style="font-family:var(--pixel);font-size:clamp(1rem,3vw,1.6rem);color:var(--green);line-height:1">20<span style="font-size:.5em">+</span></div>
+          <div style="font-family:var(--pixel);font-size:.38rem;color:var(--muted);margin-top:.6rem;letter-spacing:.08em;line-height:1.8">志愿活动<br>策划场次</div>
+        </div>
+        <div style="
+          background:var(--bg);border:2px solid var(--border);
+          padding:1.4rem 1rem;text-align:center;position:relative;overflow:hidden;
+          transition:border-color .2s;
+        "
+        onmouseenter="this.style.borderColor='var(--cyan)'"
+        onmouseleave="this.style.borderColor='var(--border)'"
+        >
+          <div style="position:absolute;top:0;left:0;border-top:8px solid var(--cyan);border-right:8px solid transparent"></div>
+          <div style="font-family:var(--pixel);font-size:clamp(1rem,3vw,1.6rem);color:var(--cyan);line-height:1">300<span style="font-size:.5em">+</span></div>
+          <div style="font-family:var(--pixel);font-size:.38rem;color:var(--muted);margin-top:.6rem;letter-spacing:.08em;line-height:1.8">项目覆盖<br>师生参与</div>
+        </div>
+        <div style="
+          background:var(--bg);border:2px solid var(--border);
+          padding:1.4rem 1rem;text-align:center;position:relative;overflow:hidden;
+          transition:border-color .2s;
+        "
+        onmouseenter="this.style.borderColor='var(--yellow)'"
+        onmouseleave="this.style.borderColor='var(--border)'"
+        >
+          <div style="position:absolute;top:0;left:0;border-top:8px solid var(--yellow);border-right:8px solid transparent"></div>
+          <div style="font-family:var(--pixel);font-size:clamp(1rem,3vw,1.6rem);color:var(--yellow);line-height:1">40<span style="font-size:.5em">+</span></div>
+          <div style="font-family:var(--pixel);font-size:.38rem;color:var(--muted);margin-top:.6rem;letter-spacing:.08em;line-height:1.8">跨院系<br>志愿者讲师</div>
+        </div>
+      </div>
+
       <div class="pixel-divider"></div>
-      
-      <div class="edu-major">
-        <strong>活动策划与统筹</strong><br>
-        - 策划和执行了20+场志愿活动，包括社区儿童关爱课堂、海边环境保护等，平均每场活动参与人次达到30+。<br>
-        - 负责活动全流程的制定、活动执行、以及外部合作沟通，确保活动顺利进行。
+
+      <!-- 两大工作方向 -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-bottom:1rem">
+
+        <!-- 卡片 1：活动策划统筹 -->
+        <div style="
+          background:var(--panel);border:2px solid var(--border);
+          padding:1.8rem;position:relative;overflow:hidden;
+          transition:border-color .2s,box-shadow .2s;
+        "
+        onmouseenter="this.style.borderColor='var(--green)';this.style.boxShadow='0 0 14px rgba(0,255,136,.12)'"
+        onmouseleave="this.style.borderColor='var(--border)';this.style.boxShadow='none'"
+        >
+          <div style="position:absolute;top:0;left:0;border-top:10px solid var(--green);border-right:10px solid transparent"></div>
+          <div style="font-size:1.4rem;margin-bottom:.8rem">🎯</div>
+          <div style="font-family:var(--pixel);font-size:.48rem;color:var(--green);letter-spacing:.1em;margin-bottom:1rem;line-height:1.8">
+            活动策划<br>× 全流程统筹
+          </div>
+          <p style="font-size:.85rem;line-height:1.88;color:rgba(232,232,255,.62);margin-bottom:1.2rem">
+            独立策划 <strong style="color:var(--white)">20+ 场志愿活动</strong>，
+            涵盖社区儿童关爱课堂、海边环境保护行动等多元场景，
+            平均每场参与人次 <strong style="color:var(--green)">30+</strong>。
+            <br><br>
+            负责从活动方案设计、执行落地到
+            <strong style="color:var(--white)">外部资源协调沟通</strong>的全链条管理，
+            锻炼了跨组织协作与临场决策能力。
+          </p>
+          <div style="display:flex;gap:.4rem;flex-wrap:wrap">
+            <span class="course-tag">活动策划</span>
+            <span class="course-tag">项目执行</span>
+            <span class="course-tag">外部协作</span>
+          </div>
+        </div>
+
+        <!-- 卡片 2：长期帮扶项目 + 荣誉 -->
+        <div style="
+          background:var(--panel);border:2px solid var(--yellow);
+          padding:1.8rem;position:relative;overflow:hidden;
+          box-shadow:0 0 16px rgba(255,230,0,.08);
+          transition:box-shadow .2s;
+        "
+        onmouseenter="this.style.boxShadow='0 0 22px rgba(255,230,0,.22)'"
+        onmouseleave="this.style.boxShadow='0 0 16px rgba(255,230,0,.08)'"
+        >
+          <div style="position:absolute;top:0;left:0;border-top:10px solid var(--yellow);border-right:10px solid transparent"></div>
+          <!-- 荣誉标签 -->
+          <div style="
+            position:absolute;top:.8rem;right:.8rem;
+            font-family:var(--pixel);font-size:.33rem;
+            background:var(--yellow);color:#1a1000;
+            padding:.22rem .55rem;letter-spacing:.05em;
+          ">★ 校级优秀</div>
+
+          <div style="font-size:1.4rem;margin-bottom:.8rem">🏫</div>
+          <div style="font-family:var(--pixel);font-size:.48rem;color:var(--yellow);letter-spacing:.1em;margin-bottom:1rem;line-height:1.8">
+            资源整合<br>× 项目管理
+          </div>
+          <p style="font-size:.85rem;line-height:1.88;color:rgba(232,232,255,.62);margin-bottom:1.2rem">
+            承接并维护小学<strong style="color:var(--white)">长期帮扶项目</strong>，
+            负责线上 + 线下支教活动的日常统筹与运转，
+            跨院系协调 <strong style="color:var(--yellow)">40+ 名</strong>志愿者讲师参与，
+            并同步组织物资捐赠活动。
+            <br><br>
+            项目覆盖全校 <strong style="color:var(--white)">300+ 师生</strong>参与，
+            获评<strong style="color:var(--yellow)">校级优秀公益项目</strong>。
+            在前辈搭建的体系基础上，
+            练习了<strong style="color:var(--white)">多方协调与持续运营</strong>的实际能力。
+          </p>
+          <div style="display:flex;gap:.4rem;flex-wrap:wrap">
+            <span class="course-tag" style="border-color:var(--yellow);color:var(--yellow)">跨组织资源整合</span>
+            <span class="course-tag" style="border-color:var(--yellow);color:var(--yellow)">项目统筹管理</span>
+            <span class="course-tag" style="border-color:var(--yellow);color:var(--yellow)">团队招募运营</span>
+          </div>
+        </div>
+
       </div>
-      
-      <div class="pixel-divider"></div>
-      
-      <div class="edu-major">
-        <strong>资源整合与项目管理</strong><br>
-        - 主导小学长期帮扶项目，搭建线上+线下的支教体系，成功联动40+名志愿者讲师，发起物资捐赠活动。<br>
-        - 项目覆盖全校300+师生，获得校级“优秀公益项目”称号。
-      </div>
-    </div>
+
+    </div><!-- /主卡片 -->
   </div>
 </section>
   
