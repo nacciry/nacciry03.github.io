@@ -692,21 +692,7 @@
   </div>
 </section>
 
-<!-- 同时，把原来 SKILLS section 的 STAGE 02 改成 STAGE 03，
-     CONTACT 的 FINAL STAGE 不用动。
-     找到这行：<div class="section-label">STAGE 02</div>
-     （在 SKILLS section 里的那个）改成：
-     <div class="section-label">STAGE 03</div>          -->
 
-  <!-- ══════════════════════════════════════════
-     项目经历板块
-     粘贴位置：插入到实习经历 section 的【下方】，
-     也就是 <!-- SKILLS --> 注释的上方
-     （如果你已经插入了实习经历，就紧接在实习经历的
-      </section> 结束标签下方粘贴）
-     
-     同时记得把技能区的 STAGE 03 改成 STAGE 04
-═══════════════════════════════════════════ -->
 
 <!-- PROJECTS -->
 <section id="projects" style="background:var(--surface)">
@@ -719,23 +705,58 @@
     <!-- ── 项目卡片：创新大赛 ── -->
     <div class="edu-card reveal" style="margin-bottom:1rem">
 
-      <!-- 顶部：项目名称 + 荣誉标签 -->
-      <div class="edu-school-row" style="align-items:center">
-        <div>
-          <div class="edu-school-name" style="color:var(--yellow)">
-            🤖 投影交互式 AI 陪伴机器人
-          </div>
-          <div style="font-size:.85rem;color:rgba(232,232,255,.55);margin-top:.3rem;font-family:var(--body)">
-            中国国际大学生创新大赛（2025）· 商业组组长
-          </div>
-        </div>
-        <!-- 金奖徽章 -->
+      <!-- 顶部：金奖横幅 + 项目名称 -->
+
+      <!-- 金奖全宽横幅 -->
+      <div style="
+        margin:-2.5rem -2.5rem 2rem -2.5rem;
+        padding:1.1rem 2rem;
+        background:linear-gradient(90deg,#7a5500,#b8860b,#ffe600,#ffb700,#b8860b,#7a5500);
+        background-size:200% 100%;
+        animation:goldShine 3s linear infinite;
+        display:flex;align-items:center;justify-content:center;gap:1.2rem;
+        position:relative;overflow:hidden;
+      ">
+        <!-- 扫光效果 -->
         <div style="
-          font-family:var(--pixel);font-size:.38rem;letter-spacing:.08em;
-          background:linear-gradient(135deg,#b8860b,#ffe600,#b8860b);
-          color:#1a1a00;padding:.45rem 1rem;white-space:nowrap;
-          box-shadow:0 0 12px rgba(255,230,0,.35);flex-shrink:0;
-        ">🥇 国家金奖</div>
+          position:absolute;inset:0;
+          background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.25) 50%,transparent 60%);
+          animation:goldSweep 2.5s ease-in-out infinite;
+          pointer-events:none;
+        "></div>
+        <span style="font-size:1.8rem;filter:drop-shadow(0 0 8px rgba(255,200,0,.8))">🏆</span>
+        <div style="text-align:center">
+          <div style="
+            font-family:var(--pixel);font-size:clamp(.55rem,2vw,.85rem);
+            color:#1a1000;letter-spacing:.15em;line-height:2;
+            text-shadow:0 1px 2px rgba(255,255,255,.3);
+          ">国家金奖</div>
+          <div style="
+            font-family:var(--pixel);font-size:.38rem;color:rgba(30,15,0,.7);
+            letter-spacing:.1em;
+          ">中国国际大学生创新大赛 2025</div>
+        </div>
+        <span style="font-size:1.8rem;filter:drop-shadow(0 0 8px rgba(255,200,0,.8))">🏆</span>
+      </div>
+      <style>
+        @keyframes goldShine {
+          0%   { background-position:0% 0; }
+          100% { background-position:200% 0; }
+        }
+        @keyframes goldSweep {
+          0%   { transform:translateX(-100%); }
+          60%,100% { transform:translateX(200%); }
+        }
+      </style>
+
+      <!-- 项目名称行 -->
+      <div>
+        <div class="edu-school-name" style="color:var(--yellow)">
+          🤖 投影交互式 AI 陪伴机器人
+        </div>
+        <div style="font-size:.85rem;color:rgba(232,232,255,.55);margin-top:.3rem;font-family:var(--body)">
+          中国国际大学生创新大赛（2025）· 商业组组长
+        </div>
       </div>
 
       <!-- 一句话项目定位 -->
@@ -956,6 +977,7 @@
      在 <li><a href="#internship">实习</a></li> 下方加：
      <li><a href="#projects">项目</a></li>
   ────────────────────────────────
+-->
 -->
 <!-- CONTACT -->
 <section id="contact">
