@@ -1102,17 +1102,6 @@ onmouseleave="this.style.background='rgba(255,230,0,.07)';this.style.borderColor
 </section>
 
 
-
-<!-- ══════════════════════════════════════════
-     校园经历板块
-     粘贴位置：插入到项目经历 </section> 的【下方】，
-     技能 <!-- SKILLS --> 注释的【上方】
-     
-     同时记得：
-     - 技能区 STAGE 04 → 改为 STAGE 05
-     - 导航栏加：<li><a href="#campus">校园</a></li>
-═══════════════════════════════════════════ -->
-
 <!-- CAMPUS -->
 <section id="campus" style="background:var(--bg)">
   <div class="section-wrapper">
@@ -1259,6 +1248,165 @@ onmouseleave="this.style.background='rgba(255,230,0,.07)';this.style.borderColor
       </div>
 
     </div><!-- /主卡片 -->
+  </div>
+</section>
+
+  <!-- ══════════════════════════════════════════
+     语言 & 个人特长板块
+     粘贴位置：插入到校园经历 </section> 的【下方】，
+     技能 <!-- SKILLS --> 注释的【上方】
+     （也就是紧接在校园经历之后，技能板块之前）
+
+     同时记得：
+     - 技能区 STAGE 05 → 改为 STAGE 06
+     - 导航栏加：<li><a href="#personal">关于</a></li>
+       （放在校园那行下方）
+═══════════════════════════════════════════ -->
+
+<!-- PERSONAL -->
+<section id="personal" style="background:var(--surface)">
+  <div class="section-wrapper">
+    <div class="section-header reveal">
+      <div class="section-label">STAGE 05</div>
+      <div class="section-main-title">语言 & 特长 <span class="accent">ABOUT ME</span></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem" class="reveal">
+
+      <!-- 左：语言能力 -->
+      <div style="
+        background:var(--panel);border:2px solid var(--border);
+        padding:2rem;position:relative;overflow:hidden;
+        transition:border-color .2s;
+      "
+      onmouseenter="this.style.borderColor='var(--cyan)'"
+      onmouseleave="this.style.borderColor='var(--border)'"
+      >
+        <div style="position:absolute;top:0;left:0;border-top:10px solid var(--cyan);border-right:10px solid transparent"></div>
+        <div style="font-size:1.3rem;margin-bottom:.8rem">🌐</div>
+        <div style="font-family:var(--pixel);font-size:.5rem;color:var(--cyan);letter-spacing:.1em;margin-bottom:1.5rem;line-height:1.8">
+          语言能力<br>LANGUAGE
+        </div>
+
+        <!-- 中文 -->
+        <div style="margin-bottom:1.2rem">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem">
+            <span style="font-size:.88rem;color:var(--white)">中文</span>
+            <span style="font-family:var(--pixel);font-size:.38rem;color:var(--green)">母语</span>
+          </div>
+          <div style="height:8px;background:var(--border);border:1px solid rgba(255,255,255,.06)">
+            <div style="
+              height:100%;width:100%;
+              background:repeating-linear-gradient(90deg,var(--green) 0,var(--green) 10px,rgba(0,0,0,.3) 10px,rgba(0,0,0,.3) 12px);
+            "></div>
+          </div>
+        </div>
+
+        <!-- 英文 -->
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem">
+            <span style="font-size:.88rem;color:var(--white)">英语</span>
+            <span style="font-family:var(--pixel);font-size:.38rem;color:var(--cyan)">CET-6</span>
+          </div>
+          <div style="height:8px;background:var(--border);border:1px solid rgba(255,255,255,.06)">
+            <div style="
+              height:100%;width:72%;
+              background:repeating-linear-gradient(90deg,var(--cyan) 0,var(--cyan) 10px,rgba(0,0,0,.3) 10px,rgba(0,0,0,.3) 12px);
+            "></div>
+          </div>
+          <div style="font-size:.8rem;color:rgba(232,232,255,.45);margin-top:.7rem;line-height:1.7">
+            具备基本商务沟通与英文文案撰写能力
+          </div>
+        </div>
+      </div>
+
+      <!-- 右：运动竞技成绩（主角） -->
+      <div style="
+        background:var(--panel);border:2px solid var(--green);
+        padding:2rem;position:relative;overflow:hidden;
+        box-shadow:0 0 20px rgba(0,255,136,.1);
+        transition:box-shadow .2s;
+      "
+      onmouseenter="this.style.boxShadow='0 0 28px rgba(0,255,136,.22)'"
+      onmouseleave="this.style.boxShadow='0 0 20px rgba(0,255,136,.1)'"
+      >
+        <div style="position:absolute;top:0;left:0;border-top:10px solid var(--green);border-right:10px solid transparent"></div>
+        <!-- 奖牌角标 -->
+        <div style="
+          position:absolute;top:.8rem;right:.8rem;
+          font-family:var(--pixel);font-size:.33rem;
+          background:var(--green);color:var(--bg);
+          padding:.22rem .55rem;letter-spacing:.05em;
+        ">🥉 省级竞技</div>
+
+        <div style="font-size:1.3rem;margin-bottom:.8rem">🏊</div>
+        <div style="font-family:var(--pixel);font-size:.5rem;color:var(--green);letter-spacing:.1em;margin-bottom:1.5rem;line-height:1.8">
+          运动竞技<br>ATHLETICS
+        </div>
+
+        <!-- 两项成绩 -->
+        <div style="display:flex;flex-direction:column;gap:.8rem;margin-bottom:1.4rem">
+
+          <div style="
+            background:var(--bg);border:1px solid var(--border);
+            padding:.9rem 1.1rem;display:flex;align-items:center;gap:1rem;
+            transition:border-color .2s;
+          "
+          onmouseenter="this.style.borderColor='var(--green)'"
+          onmouseleave="this.style.borderColor='var(--border)'"
+          >
+            <div style="font-family:var(--pixel);font-size:1.1rem;color:var(--green);flex-shrink:0">#3</div>
+            <div>
+              <div style="font-size:.85rem;color:var(--white);line-height:1.5">女子甲组 50m 仰泳 · 决赛</div>
+              <div style="font-family:var(--pixel);font-size:.35rem;color:var(--muted);margin-top:.25rem;letter-spacing:.08em">
+                2023 山东省大学生游泳锦标赛
+              </div>
+            </div>
+          </div>
+
+          <div style="
+            background:var(--bg);border:1px solid var(--border);
+            padding:.9rem 1.1rem;display:flex;align-items:center;gap:1rem;
+            transition:border-color .2s;
+          "
+          onmouseenter="this.style.borderColor='var(--green)'"
+          onmouseleave="this.style.borderColor='var(--border)'"
+          >
+            <div style="font-family:var(--pixel);font-size:1.1rem;color:var(--green);flex-shrink:0">#3</div>
+            <div>
+              <div style="font-size:.85rem;color:var(--white);line-height:1.5">女子甲组 50m 自由泳 · 决赛</div>
+              <div style="font-family:var(--pixel);font-size:.35rem;color:var(--muted);margin-top:.25rem;letter-spacing:.08em">
+                2023 山东省大学生游泳锦标赛
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 日常爱好 -->
+        <div style="
+          border-top:1px dashed var(--border);padding-top:1rem;
+          display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;
+        ">
+          <span style="font-family:var(--pixel);font-size:.38rem;color:var(--muted);margin-right:.3rem">日常 //</span>
+          <span class="course-tag">🏃 跑步</span>
+          <span class="course-tag">💪 健身</span>
+        </div>
+
+      </div>
+    </div><!-- /grid -->
+
+    <!-- 底部一句话 -->
+    <div class="reveal" style="
+      margin-top:1.2rem;padding:1.1rem 1.5rem;
+      background:rgba(0,255,136,.04);border-left:3px solid var(--green);
+      font-size:.87rem;line-height:1.9;color:rgba(232,232,255,.55);
+    ">
+      <span style="font-family:var(--pixel);font-size:.42rem;color:var(--green)">// NOTE</span><br>
+     热爱运动，有一定的<strong style="color:var(--white)">抗压能力</strong>，
+也习惯了<strong style="color:var(--white)">坚持做一件事</strong>。
+    </div>
+
   </div>
 </section>
   
