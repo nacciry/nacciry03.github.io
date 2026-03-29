@@ -1664,7 +1664,10 @@ onmouseleave="this.style.boxShadow='0 0 20px rgba(0,255,136,.1)'"
 
 </div>
 
-    <!-- 底部一句话 -->
+  
+
+  </div>
+      <!-- 底部一句话 -->
     <div class="reveal" style="
       margin-top:1.2rem;padding:1.1rem 1.5rem;
       background:rgba(0,255,136,.04);border-left:3px solid var(--green);
@@ -1674,8 +1677,6 @@ onmouseleave="this.style.boxShadow='0 0 20px rgba(0,255,136,.1)'"
       热爱运动，有一定的<strong style="color:var(--white)">抗压能力</strong>，
       也习惯了<strong style="color:var(--white)">坚持做一件事</strong>。
     </div>
-
-  </div>
 </section>
   
 <!-- CONTACT -->
@@ -1744,19 +1745,20 @@ onmouseleave="this.style.boxShadow='0 0 20px rgba(0,255,136,.1)'"
     });
   },{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function toggleCert(id) {
+    const panel = document.getElementById(id);
+    const isOpen = panel.style.display !== 'none';
+    panel.style.display = isOpen ? 'none' : 'block';
+  }
+
+  function togglePortfolio(id) {
+    const panel = document.getElementById(id);
+    const arrow = document.getElementById('arrow-' + id);
+    const isOpen = panel.style.display !== 'none';
+    panel.style.display = isOpen ? 'none' : 'block';
+    arrow.textContent = isOpen ? '▼' : '▲';
+  }
+
 </script>
-  <script>
-    // 显示和隐藏图片
-    function toggleImage(imageId) {
-      var image = document.getElementById(imageId);
-      if (image.style.display === "none") {
-        image.style.display = "block"; // 显示图片
-      } else {
-        image.style.display = "none"; // 隐藏图片
-      }
-    }
-  </script>
-</body>
-  </script>
 </body>
 </html>
