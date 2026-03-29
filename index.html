@@ -1529,83 +1529,143 @@ onmouseleave="this.style.background='rgba(255,230,0,.07)';this.style.borderColor
         </div>
       </div>
 
-      <!-- 右：运动竞技成绩（主角） -->
+      <!-- ══════════════════════════════════════════
+     替换说明：
+     找到「右：运动竞技成绩」整块 div（从注释开始到最后的 </div>），
+     整个替换成下面这段。
+
+     同时需要把两张凭证图片上传到 GitHub 仓库根目录：
+     cert1.jpg → 仰泳获奖凭证
+     cert2.jpg → 自由泳获奖凭证
+     （文件名你可以自己定，改掉 src 里的名字就行）
+══════════════════════════════════════════ -->
+
+<!-- 右：运动竞技成绩 -->
+<div style="
+  background:var(--panel);border:2px solid var(--green);
+  padding:2rem;position:relative;overflow:hidden;
+  box-shadow:0 0 20px rgba(0,255,136,.1);
+  transition:box-shadow .2s;
+"
+onmouseenter="this.style.boxShadow='0 0 28px rgba(0,255,136,.22)'"
+onmouseleave="this.style.boxShadow='0 0 20px rgba(0,255,136,.1)'"
+>
+  <div style="position:absolute;top:0;left:0;border-top:10px solid var(--green);border-right:10px solid transparent"></div>
+
+  <!-- 省级竞技角标（放大版） -->
+  <div style="
+    position:absolute;top:.8rem;right:.8rem;
+    font-family:var(--pixel);font-size:.48rem;
+    background:var(--green);color:var(--bg);
+    padding:.35rem .8rem;letter-spacing:.06em;
+    box-shadow:0 0 10px rgba(0,255,136,.4);
+  ">🥉 省级竞技</div>
+
+  <div style="font-size:1.3rem;margin-bottom:.8rem">🏊</div>
+  <div style="font-family:var(--pixel);font-size:.5rem;color:var(--green);letter-spacing:.1em;margin-bottom:1.5rem;line-height:1.8">
+    运动竞技<br>ATHLETICS
+  </div>
+
+  <!-- 两项成绩 -->
+  <div style="display:flex;flex-direction:column;gap:.8rem;margin-bottom:1.4rem">
+
+    <!-- 仰泳 -->
+    <div>
       <div style="
-        background:var(--panel);border:2px solid var(--green);
-        padding:2rem;position:relative;overflow:hidden;
-        box-shadow:0 0 20px rgba(0,255,136,.1);
-        transition:box-shadow .2s;
+        background:var(--bg);border:1px solid var(--border);
+        padding:.9rem 1.1rem;display:flex;align-items:center;gap:1rem;
+        transition:border-color .2s;
       "
-      onmouseenter="this.style.boxShadow='0 0 28px rgba(0,255,136,.22)'"
-      onmouseleave="this.style.boxShadow='0 0 20px rgba(0,255,136,.1)'"
+      onmouseenter="this.style.borderColor='var(--green)'"
+      onmouseleave="this.style.borderColor='var(--border)'"
       >
-        <div style="position:absolute;top:0;left:0;border-top:10px solid var(--green);border-right:10px solid transparent"></div>
-        <!-- 奖牌角标 -->
-        <div style="
-          position:absolute;top:.8rem;right:.8rem;
-          font-family:var(--pixel);font-size:.33rem;
-          background:var(--green);color:var(--bg);
-          padding:.22rem .55rem;letter-spacing:.05em;
-        ">🥉 省级竞技</div>
-
-        <div style="font-size:1.3rem;margin-bottom:.8rem">🏊</div>
-        <div style="font-family:var(--pixel);font-size:.5rem;color:var(--green);letter-spacing:.1em;margin-bottom:1.5rem;line-height:1.8">
-          运动竞技<br>ATHLETICS
-        </div>
-
-        <!-- 两项成绩 -->
-        <div style="display:flex;flex-direction:column;gap:.8rem;margin-bottom:1.4rem">
-
-          <div style="
-            background:var(--bg);border:1px solid var(--border);
-            padding:.9rem 1.1rem;display:flex;align-items:center;gap:1rem;
-            transition:border-color .2s;
-          "
-          onmouseenter="this.style.borderColor='var(--green)'"
-          onmouseleave="this.style.borderColor='var(--border)'"
-          >
-            <div style="font-family:var(--pixel);font-size:1.1rem;color:var(--green);flex-shrink:0">#3</div>
-            <div>
-              <div style="font-size:.85rem;color:var(--white);line-height:1.5">女子甲组 50m 仰泳 · 决赛</div>
-              <div style="font-family:var(--pixel);font-size:.45rem;color:var(--muted);margin-top:.25rem;letter-spacing:.06em">
-                2023 山东省大学生游泳锦标赛
-              </div>
-            </div>
+        <div style="font-family:var(--pixel);font-size:1.1rem;color:var(--green);flex-shrink:0">#3</div>
+        <div style="flex:1">
+          <div style="font-size:.85rem;color:var(--white);line-height:1.5">女子甲组 50m 仰泳 · 决赛</div>
+          <div style="font-family:var(--pixel);font-size:.45rem;color:var(--muted);margin-top:.25rem;letter-spacing:.06em">
+            2023 山东省大学生游泳锦标赛
           </div>
-
-          <div style="
-            background:var(--bg);border:1px solid var(--border);
-            padding:.9rem 1.1rem;display:flex;align-items:center;gap:1rem;
-            transition:border-color .2s;
-          "
-          onmouseenter="this.style.borderColor='var(--green)'"
-          onmouseleave="this.style.borderColor='var(--border)'"
-          >
-            <div style="font-family:var(--pixel);font-size:1.1rem;color:var(--green);flex-shrink:0">#3</div>
-            <div>
-              <div style="font-size:.85rem;color:var(--white);line-height:1.5">女子甲组 50m 自由泳 · 决赛</div>
-              <div style="font-family:var(--pixel);font-size:.45rem;color:var(--muted);margin-top:.25rem;letter-spacing:.06em">
-                2023 山东省大学生游泳锦标赛
-              </div>
-            </div>
-          </div>
-
         </div>
-
-        <!-- 日常爱好 -->
-        <div style="
-          border-top:1px dashed var(--border);padding-top:1rem;
-          display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;
-        ">
-          <span style="font-family:var(--pixel);font-size:.45rem;color:var(--muted);margin-right:.3rem">日常 //</span>
-          <span class="course-tag" style="font-size:.78rem">🏊 游泳</span>
-          <span class="course-tag" style="font-size:.78rem">🏃 跑步</span>
-          <span class="course-tag" style="font-size:.78rem">💪 健身</span>
-        </div>
-
+        <!-- 查看凭证按钮 -->
+        <button onclick="toggleCert('cert1')" style="
+          flex-shrink:0;
+          font-family:var(--pixel);font-size:.35rem;
+          color:var(--green);background:rgba(0,255,136,.08);
+          border:1px solid rgba(0,255,136,.4);
+          padding:.3rem .65rem;cursor:pointer;
+          letter-spacing:.05em;white-space:nowrap;
+          transition:all .2s;
+        "
+        onmouseenter="this.style.background='rgba(0,255,136,.2)';this.style.borderColor='var(--green)'"
+        onmouseleave="this.style.background='rgba(0,255,136,.08)';this.style.borderColor='rgba(0,255,136,.4)'"
+        id="certbtn1">📄 查看凭证</button>
       </div>
-    </div><!-- /grid -->
+      <!-- 凭证图片展开区 -->
+      <div id="cert1" style="display:none;border:1px solid var(--green);border-top:none;padding:1rem;background:rgba(0,0,0,.2)">
+        <img src="cert1.jpg" alt="仰泳获奖凭证" style="width:100%;height:auto;display:block;border:1px solid var(--border)">
+        <div style="font-family:var(--pixel);font-size:.35rem;color:var(--muted);margin-top:.6rem;text-align:center;letter-spacing:.08em">
+          女子甲组 50m 仰泳 · 决赛第三名
+        </div>
+      </div>
+    </div>
 
+    <!-- 自由泳 -->
+    <div>
+      <div style="
+        background:var(--bg);border:1px solid var(--border);
+        padding:.9rem 1.1rem;display:flex;align-items:center;gap:1rem;
+        transition:border-color .2s;
+      "
+      onmouseenter="this.style.borderColor='var(--green)'"
+      onmouseleave="this.style.borderColor='var(--border)'"
+      >
+        <div style="font-family:var(--pixel);font-size:1.1rem;color:var(--green);flex-shrink:0">#3</div>
+        <div style="flex:1">
+          <div style="font-size:.85rem;color:var(--white);line-height:1.5">女子甲组 50m 自由泳 · 决赛</div>
+          <div style="font-family:var(--pixel);font-size:.45rem;color:var(--muted);margin-top:.25rem;letter-spacing:.06em">
+            2023 山东省大学生游泳锦标赛
+          </div>
+        </div>
+        <!-- 查看凭证按钮 -->
+        <button onclick="toggleCert('cert2')" style="
+          flex-shrink:0;
+          font-family:var(--pixel);font-size:.35rem;
+          color:var(--green);background:rgba(0,255,136,.08);
+          border:1px solid rgba(0,255,136,.4);
+          padding:.3rem .65rem;cursor:pointer;
+          letter-spacing:.05em;white-space:nowrap;
+          transition:all .2s;
+        "
+        onmouseenter="this.style.background='rgba(0,255,136,.2)';this.style.borderColor='var(--green)'"
+        onmouseleave="this.style.background='rgba(0,255,136,.08)';this.style.borderColor='rgba(0,255,136,.4)'"
+        id="certbtn2">📄 查看凭证</button>
+      </div>
+      <!-- 凭证图片展开区 -->
+      <div id="cert2" style="display:none;border:1px solid var(--green);border-top:none;padding:1rem;background:rgba(0,0,0,.2)">
+        <img src="cert2.jpg" alt="自由泳获奖凭证" style="width:100%;height:auto;display:block;border:1px solid var(--border)">
+        <div style="font-family:var(--pixel);font-size:.35rem;color:var(--muted);margin-top:.6rem;text-align:center;letter-spacing:.08em">
+          女子甲组 50m 自由泳 · 决赛第三名
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /两项成绩 -->
+
+  <!-- 日常爱好 -->
+  <div style="
+    border-top:1px dashed var(--border);padding-top:1rem;
+    display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;
+  ">
+    <span style="font-family:var(--pixel);font-size:.45rem;color:var(--muted);margin-right:.3rem">日常 //</span>
+    <span class="course-tag" style="font-size:.78rem">🏊 游泳</span>
+    <span class="course-tag" style="font-size:.78rem">🏃 跑步</span>
+    <span class="course-tag" style="font-size:.78rem">💪 健身</span>
+  </div>
+
+</div>
+
+    
+     
     <!-- 底部一句话 -->
     <div class="reveal" style="
       margin-top:1.2rem;padding:1.1rem 1.5rem;
